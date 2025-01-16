@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
+
 
 // endpoint, middleware(s)
 app.get('/', (req, res) => {
   res.send('Hello Express!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
-      
+app.listen(
+  port,
+   ()=> console.log(
+    `server is running on ... ${port}`));
