@@ -1,0 +1,185 @@
+/* Importing Google Fonts and Bootstrap Icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* General Styles */
+body {
+  background-image: url('data:image/svg+xml,%3Csvg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z" fill="%239C92AC" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E');
+  background-color: #88Bdbc;
+}
+
+h1, h2 {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+p, li {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  background-color: #fafafa;
+  text-align: justify;
+  margin: 0 25px;
+}
+
+/* Styles for specific sections */
+
+#thankYou {
+  text-align: center;
+  padding: 20px;
+}
+
+#thankYou h2 {
+  margin-bottom: 20px;
+  color: black;
+}
+
+.thank-you-background {
+  position: relative;
+  background: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3ZldTFhZThjMnhsbHJnbHI4dnJqamlzemhmNjVscWN4eWltaW0yOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qnnuQhywGxs3ZQGQlu/giphy.gif') no-repeat center center;
+  background-size: cover;
+  padding: 200px;
+  border-radius: 8px;
+}
+
+.thank-you-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 500px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.seeMe, #CodeAcademy {
+  border: dashed 4px rgb(128, 0, 119);
+}
+
+#confettiButton {
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+#confettiButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Design Responsive for Cards */
+.row-cols-1>.col,
+.row-cols-md-2>.col { 
+  display: flex; 
+  flex: 1 0 auto; /* Make sures that the cards have equal length */
+}
+
+
+.row-cols-1 .card,
+.row-cols-md-2 .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body {
+  flex: 1 1 auto; /* Make sures the card body fills up any space */
+}
+
+/* Elments that are Interactive */
+  /* Current Games and Games on Radar Sections */
+.game-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.game-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Other Styles */
+#gamerGirl {
+  display: block;
+  margin: auto;
+  width: 95%;
+}
+
+#currentGamesH2, #gamesRadarH2 {
+  margin-top: -30px;
+}
+
+#htmlOut {
+  margin-bottom: 55px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  height: 600px;
+}
+
+#journey {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+
+#favList {
+  background-color: #B6E2D3;
+  text-align: left;
+}
+
+#home h2 {
+  text-decoration: underline;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+#aboutMain {
+  padding-bottom: 80px;
+}
+
+#currentList {
+  background-color: #B6E2D3
+}
+
+/* Layout Adjustment */
+.iframe-container {
+  width: 100%;
+  text-align: center;
+  margin-top: px;
+  background-color: #B6E2D3;
+}
+
+/* Font Section */
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lora-unique {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

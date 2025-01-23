@@ -1,14 +1,245 @@
+<!-- 
+  author: Omar Diaz Martinez 
+  created: 07/17/2024
+  version: 1.1
+  github: @OmarVCRZ
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar's Sobie Profile</title>
+  <meta charset="UTF-8">
+  <title>Omar's Sobie Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="./Css/GameStyle.css">
 </head>
+
 <body>
-    <h1>
-        Omar's Sobie Profile
-    </h1>
-    <a href="/helloRender">This is my Hello from Render</a>
+
+ <!-- Navigation Bar -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-controller"></i>
+        Omar's Secret Games APP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gameOdyssey">Gaming Odyssey</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#favoriteGames">Favorite Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#currentGames">Currently Playing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gamesRadar">Games on My Radar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#thankYou">Thank you</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Pages/About.html">About Developer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="repo" href="https://github.com/OmarVCRZ/secret-cis376-games-app">
+              <!-- Source code link with angle brackets -->
+              <!-- &lft and &gt are < and > brackets to implement-->
+              &lt;Source Code <i class="bi bi-github"></i>&gt;</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" target="nu"
+              href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fomarvcrz.github.io%2Fsecret-cis376-games-app%2F">
+              Check Page Validity</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Home Section -->
+    <header>
+      <h1><u>Omar's Sobie Profile</u></h1>
+      <div id="home">
+        <img id="gamerGirl"
+          src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHl5bnB6cWRoM2t2empybDVxZWxvc2EzN21hdmUzNXJmNjJiZGRqYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9s1SehQy2pEi5lM7cE/giphy-downsized-large.gif"
+          alt="Gaming Girl Gif">
+      </div>
+    </header>
+
+    <!-- Gaming Odyssey Section -->
+    <section id="gameOdyssey">
+      <br>
+      <h2><u>Gaming Odyssey</u></h2>
+      <p>
+        Welcome to my Gaming Odyssey! This webpage is dedicated to sharing my journey through the vast world of video
+        games. Join me as I recount my adventures of playing video games!
+        <br>
+        <br>My gaming adventure started long ago when I was a little kid. One-day, my eldest brother returned from work
+        and bought a Playstation 2 Console. It was the first moment I ever laid eyes on a video game console and
+        instantly fell in love with it. I enjoyed the diverse genres it offered providing an immersive experience and
+        discovery waiting to be unleashed.
+        <br>
+        <br>Mental health, is one the things I struggle with every day, but when I play video games, I feel like I'm in
+        my own world, away from the stress, or constraints of every day life and into a virtual reality where I can step
+        in and be someone different. As I move forward, I will always appreciate the impact video games had on my life,
+        as they provide me a sense of solace, where I can escape into an endless world of opportunity and adventure.
+      </p>
+    </section>
+
+    <!-- Favorite Games Section-->
+    <section id="favoriteGames" class="ms-2 p-2">
+      <h2><u>Favorite Games!</u></h2>
+      <div class="mb-3">
+        <!-- Buttons for game list management -->
+        <button id="btnAddSong" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addGameModal">Add
+          Game</button>
+
+        <button id="btnShowAll" class="btn btn-light btn-sm">Show All</button>
+        <button id="btnHideAll" class="btn btn-light btn-sm">Hide All</button>
+
+        <button id="btnConsoleData" class="btn btn-light btn-sm">Write Data Object in Console</button>
+
+      </div>
+
+      <!-- Modal for adding a new game-->
+      <div id="addGameModal" class="modal fade" tabindex="-1" aria-labelledby="addGameModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addGameModalLabel">Add New Game</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group">
+                <!-- Form inputs for adding a game -->
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Game Name</span>
+                  <input id="gameAddName" type="text" class="form-control" placeholder="game name">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Studio</span>
+                  <input id="gameAddStudio" type="text" class="form-control" placeholder="studio">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Publisher</span>
+                  <input id="gameAddPublisher" type="text" class="form-control" placeholder="publisher">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Genre</span>
+                  <input id="gameAddGenre" type="text" class="form-control" placeholder="genre">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Release Date</span>
+                  <input id="gameAddReleaseDate" type="text" class="form-control" placeholder="release date">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Platform</span>
+                  <input id="gameAddPlatform" type="text" class="form-control" placeholder="platform">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">ESRB Rating</span>
+                  <input id="gameAddESRBRating" type="text" class="form-control" placeholder="esrb rating">
+                </li>
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">TrailerURL</span>
+                  <input id="gameAddTrailerURL" type="text" class="form-control" placeholder="trailer url">
+
+                <li class="input-group w-100">
+                  <span class="w-20 input-group-text">Tags</span>
+                  <input id="gameAddTags" type="text" class="form-control" placeholder="tags">
+                </li>
+
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <!-- Button to save/close the new game -->
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="btnSaveGame" type="button" class="btn btn-primary">Save Game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- List of Games -->
+      <ul id="gamesList" class="list-group">
+        <li class="list-group-item">No Games Loaded</li>
+      </ul>
+    </section>
+
+    <!-- Current Games Section -->
+    <section id="currentGames" class="mt-5">
+      <h2 id="currentGamesH2"><u>Video Games I'm Currently Playing</u></h2>
+      <div class="row" id="currentGamesContainer">
+        <!-- Current games will be dynamically added here -->
+      </div>
+    </section>
+
+    <!-- Games on Radar Section -->
+    <section id="gamesRadar" class="mt-5">
+      <h2 id="gamesRadarH2"><u>Upcoming Games on My Watchlist</u></h2>
+      <div class="row" id="radarGamesContainer">
+        <!-- Radar games will be dynamically added here -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Thank You Section -->
+  <section id="thankYou">
+    <h2><u>Thank you for taking the time to witness my journey!</u></h2>
+    <div class="thank-you-background">
+      <div class="thank-you-content">
+        <div class="d-flex justify-content-center">
+          <!-- Button to trigger confettie -->
+          <button id="confettiButton" class="btn btn-lg btn-light">Click me if you dare!</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer bg-body-tertiary text-center text-lg-start fixed-bottom">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Favorite Video Games |
+      <a class="text-body" href="https://github.com/OmarVCRZ" target="github">ODM@Github | </a>
+      <a href="/helloRender">This is my Hello from Render</a>
+      <!-- Copyright -->
+    </div>
+  </footer>
+  <!-- scripts go here -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script>
+  <script src='Scripts/Data.js'></script>
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- Custom -->
+  <script src="./Scripts/GameScript.js"></script>
+
 </body>
 </html>
