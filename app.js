@@ -1,18 +1,19 @@
 const express = require('express')
 require('dotenv').config()
+const shajs = require('sha.js')
 const app = express()
 const port = process.env.PORT || 3000;  
 const bodyParser = require('body-parser')
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGO_URI;
+
+// console.log(uri); 
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(express.static(__dirname + '/public'))
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGO_URI;
 
-// console.log(uri);
 
-// begin all my...
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -23,6 +24,8 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
+console.log(shajs('sha256').update('cat').digest('hex')); 
 
 async function run() {
   try {
@@ -39,7 +42,9 @@ async function run() {
 run().catch(console.dir);
 
 
-// change my code 
+
+
+//begin all my middlewares
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -48,15 +53,10 @@ app.get('/', function (req, res) {
 
 app.post('/saveMyName', (req,res)=>{
   console.log('did we hit the post endpoint?'); 
-
   console.log(req.body); 
-
-
   // res.redirect('/ejs'); 
-
   res.render('words',
   {pageTitle: req.body.myName});
-
 
   // res.render('words',
   // {theData : req.body});
@@ -67,9 +67,15 @@ app.post('/saveMyName', (req,res)=>{
 app.get('/saveMyNameGet', (req,res)=>{
   console.log('did we hit the get endpoint?'); 
 
-  console.log(req.query); 
+  console.log('req.query: ', req.query); 
 
-  res.redirect('/ejs'); 
+  // console.log('req.params: ', req.params);
+
+  let reqName = req.query.myNameGet; 
+  // res.redirect('/ejs'); 
+
+  res.render('words',
+  {pageTitle: reqName});
 
 })
 
