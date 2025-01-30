@@ -11,7 +11,7 @@ const uri = process.env.MONGO_URI;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true})); 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/views'))
 
 
 
@@ -39,9 +39,27 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+// run().catch(console.dir);
 
+async function getData() {
 
+  await client.connect();
+  let collection = await client.db("game-app-database").collection("game-app-list")
+
+  let results = await collection.find({}).toArray();
+
+  console.log(results);
+  return results;
+}
+
+app.get('/read', async function (req, res) {
+  let getDataResults = await getData();
+  console.log(getDataResults);
+  res.render('games', { gameData : getDataResults });
+
+  res.sendFile(getDataResults);
+
+})
 
 
 //begin all my middlewares
