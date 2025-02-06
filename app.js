@@ -4,6 +4,7 @@ const shajs = require('sha.js')
 const app = express()
 const port = process.env.PORT || 3000;  
 const bodyParser = require('body-parser')
+const {ObjectID = }
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
@@ -44,7 +45,7 @@ async function run() {
 async function getData() {
 
   await client.connect(); 
-  let collection = await client.db("game-app-database").collection("game-app-list")
+  let collection = await client.db("game-app-database").collection("game-app-list"); 
  
   let results = await collection.find({}).toArray(); 
     
@@ -56,10 +57,61 @@ async function getData() {
 app.get('/read', async function (req, res) {
   let getDataResults = await getData(); 
   console.log(getDataResults); 
-  res.render('songs', 
-    { songData : getDataResults} ); 
+  res.render('games', 
+    { gameData : getDataResults} ); 
 
 })
+
+// app.post('/insert', async (req,res)=> {
+app.post('/insert', async (req,res)=> {
+
+
+  console.log('in /insert');
+  
+  //only for POST, GET is req.params? 
+  let newGame = req.body.myName;
+
+  //connect to db,
+  await client.connect();
+  //point to the collection 
+  await client.
+    db("game-app-database").
+    collection("game-app-list").
+    insertOne({ game: newGame});
+  res.redirect('/read');
+
+}); 
+
+app.post('/update', async (req,res)=>{
+
+  console.log("req.body: ", req.body)
+
+  client.connect; 
+  const collection = client.db("game-app-database").collection("game-app-list");
+  let result = await collection.findOneAndUpdate( 
+  {"_id": new ObjectId(req.body.nameID)}, { $set: {"fname": req.body.inputUpdateName } }
+)
+.then(result => {
+  console.log(result); 
+  res.redirect('/');
+})
+}); 
+
+app.post('/delete/:id', async (req,res)=>{
+
+  console.log("in delete, req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("game-app-database").collection("game-app-list");
+  let result = await collection.findOneAndDelete( 
+  {"_id": new ObjectId(req.params.id)}).then(result => {
+  console.log(result); 
+  res.redirect('/read');})
+
+  
+
+})
+
 
 
 
