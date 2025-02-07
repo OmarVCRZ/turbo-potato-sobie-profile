@@ -4,7 +4,7 @@ const shajs = require('sha.js')
 const app = express()
 const port = process.env.PORT || 3000;  
 const bodyParser = require('body-parser')
-const {ObjectID = }
+const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
@@ -68,16 +68,17 @@ app.post('/insert', async (req,res)=> {
 
   console.log('in /insert');
   
-  //only for POST, GET is req.params? 
-  let newGame = req.body.myName;
-
+  let newGame = req.body.myName; //only for POST, GET is req.params? 
+  console.log(newGame);
+  
   //connect to db,
   await client.connect();
   //point to the collection 
-  await client.
-    db("game-app-database").
-    collection("game-app-list").
-    insertOne({ game: newGame});
+  await client
+    .db("game-app-database")
+    .collection("game-app-list")
+    .insertOne({ game: newGame});
+  
   res.redirect('/read');
 
 }); 
@@ -87,13 +88,14 @@ app.post('/update', async (req,res)=>{
   console.log("req.body: ", req.body)
 
   client.connect; 
-  const collection = client.db("game-app-database").collection("game-app-list");
+  const collection = client.db("game-app-database")
+    .collection("game-app-list");
   let result = await collection.findOneAndUpdate( 
   {"_id": new ObjectId(req.body.nameID)}, { $set: {"fname": req.body.inputUpdateName } }
 )
 .then(result => {
   console.log(result); 
-  res.redirect('/');
+  res.redirect('/read');
 })
 }); 
 
@@ -102,9 +104,13 @@ app.post('/delete/:id', async (req,res)=>{
   console.log("in delete, req.parms.id: ", req.params.id)
 
   client.connect; 
-  const collection = client.db("game-app-database").collection("game-app-list");
-  let result = await collection.findOneAndDelete( 
-  {"_id": new ObjectId(req.params.id)}).then(result => {
+  const collection = client.db("game-app-database")
+    .collection("game-app-list");
+  let result = await collection.findOneAndDelete(
+    {
+      "_id": new ObjectId(req.params.id)
+    }
+  ).then(result => {
   console.log(result); 
   res.redirect('/read');})
 
