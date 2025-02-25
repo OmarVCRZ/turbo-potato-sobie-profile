@@ -11,6 +11,9 @@ const uri = process.env.MONGO_URI;
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true})); 
 app.use(express.static(__dirname + '/public'))
+// Serve files from the 'docs' folder using express.static
+app.use('/docs', express.static(__dirname + '/docs'));
+
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -33,18 +36,6 @@ function initProfileData() {
 }
 
 // initProfileData(); 
-
-// Added a custom rule to serve specific files
-app.get('/docs/:file', (req, res) => {
-  const file = req.params.file;
-  const filePath = __dirname + '/docs/' + file;
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      console.log(err);
-      res.status(404).send('File not found');
-    }
-  });
-});
 
 app.get('/', async function (req, res) {
   
