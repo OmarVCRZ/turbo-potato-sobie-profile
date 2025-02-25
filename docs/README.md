@@ -36,9 +36,14 @@ _so I can add skils
 - **Visual Studio Code**
     - Framwework 
     - ex/ LiveServer
+
 ## Database/Server
 - MongoDB
 - Render
+
 ## Refactor
 - Updated File Directory
 - File Configurations
+
+## Pages Link
+https://omarvcrz.github.io/turbo-potato-sobie-profile/
