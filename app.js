@@ -45,12 +45,11 @@ app.get('/', async function (req, res) {
 })
 
 app.post('/insert', async (req,res)=> {
-
   let results = await mongoCollection.insertOne({ 
     title: req.body.title,
     post: req.body.post
-  });
-
+  }).then( result => {console.log(result)} );
+  
   res.redirect('/');
 
 }); 
@@ -61,7 +60,7 @@ app.post('/delete', async function (req, res) {
       "_id": new ObjectId(req.body.deleteId)
     }
   ).then(result => {
-    
+    console.log(result)
     res.redirect('/');
   })
 

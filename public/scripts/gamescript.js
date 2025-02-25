@@ -225,6 +225,25 @@ $(document).ready(function () {
     });
   }
   
+
+  // Resume Section
+  document.addEventListener("DOMContentLoaded", function () {
+    const resumeToggleBtn = document.getElementById("resumeToggleBtn");
+    const resumeContainer = document.getElementById("resumeContainer");
+
+    resumeToggleBtn.addEventListener("click", function () {
+      if (resumeContainer.style.display === "none" || resumeContainer.style.display === "") {
+          resumeContainer.style.display = "block"; // This shows Resume
+          resumeToggleBtn.textContent = "Hide Resume"; // Changes Button Text
+      } else {
+          resumeContainer.style.display = "none"; // This Hide Resume
+          resumeToggleBtn.textContent = "View Resume"; // Changes Button Text
+      }
+  });
+  });
+
+  
+
   // Call these functions when the document is ready
   document.addEventListener('DOMContentLoaded', () => {
     loadCurrentGames();

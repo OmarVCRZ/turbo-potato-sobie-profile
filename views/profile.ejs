@@ -1,76 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>Omar's Sobie Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Omar's Sobie Profile</title>
-    <h2>Omar's Sobie Profile</h2>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Normalize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <!-- Bootstrap CSS -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>
-    <!-- Custom stylesheet -->
-    <link rel="stylesheet" href="./Css/GameStyle.css">
-  </head>
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-  <body>
+  <!-- Bootstrap CSS (Ensure version consistency) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="/styles/gamestyle.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-controller"></i>
+        Turbo-Potato-Sobie-Profile</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" target="repo" href="https://github.com/OmarVCRZ/turbo-potato-sobie-profile">
+              <!-- Source code link with angle brackets -->
+              <!-- &lft and &gt are < and > brackets to implement-->
+              &lt;Source Code <i class="bi bi-github"></i>&gt;</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" target="nu"
+              href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fturbo-potato-sobie-profile-klfo.onrender.com%2F">
+              Check Page Validity</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <main>
+    <h2><u>Welcome to My Dev Profile App</u></h2>
 
-    <form method="POST" action="insert/">
-        <input name="title">
-        <input name="post">
-        <button class="btn btn-primary" role="submit">new post</button>
-      </form>
-
-      
-    <% profileData.forEach(result=> { %>
-        <div class="col-md-8">
-        
-  
-      <form method="POST" action="update/">
-        <input name="updateTitle" value="<%= result.title %>">
-        <input name="updatePost" value="<%= result.post %>"> 
-        <input type="hidden" name="updateId" value="<%=result._id %>">
-        <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
-      </form>
-      
-  
-  
-      <form method="POST" action="delete/">
-        <input type="hidden" name="deleteId" value="<%=result._id %>">
-        <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
-      </form>
-  
-  
+    <!-- Profile Section -->
+    <div class="card">
+      <img src="/img/profile.jpg" alt="Omar Diaz" style="width:100%">
+      <h2 class="card-title text-nowrap">Omar Diaz Martinez</h5>
+        <p class="title">Computer Information Systems</p>
+        <p>University of North Alabama</p>
     </div>
-      <% }); %>
+    <br>
 
-</main>
+    <!-- Skills Section -->
+    <h2><u>Skill Information/Implementation</u></h2>
+    <section id="skills">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category</th>
+            <th scope="col">Knowledge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Web Development Computer Languages & Framework</td>
+            <td>JS, CSS, HTML, PHP, jQuery, BS5, Express, Node</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Cybersecurity Frameworks & Tools</td>
+            <td>Wireshark, Autopsy, FTK Imager, Kali Linux, Command Line Interface</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Software Development Computer Languages</td>
+            <td>Java, Python, Kotlin</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Database Management</td>
+            <td>SQL, MariaDB, Mongodb</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Cybersecurity Penetration</td>
+            <td>SQL Injection, Network Scanning (Ping, Nmap), Wireless Security Attack (Evil-Twin) </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </section>
+    <!-- Add Skills (Form) -->
+    <h2 id="CRUD"><u>CRUD Functionality [Suggested Skill List]</u></h2>
+    <form method="POST" action="insert/">
+      <input name="title">
+      <input name="post">
+      <button class="btn btn-dark" role="submit">Add Skill</button>
+    </form>
+
+    <% profileData.forEach(result=> { %>
+      <div class="col-md-8">
+        <form method="POST" action="update/">
+          <input name="updateTitle" value="<%= result.title %>">
+          <input name="updatePost" value="<%= result.post %>">
+          <input type="hidden" name="updateId" value="<%= result._id %>">
+          <button class="btn btn-outline-dark" role="submit"><i class="bi bi-pencil"></i></button>
+        </form>
+
+        <form method="POST" action="delete/">
+          <input type="hidden" name="deleteId" value="<%= result._id %>">
+          <button class="btn btn-dark" role="submit"><i class="bi bi-trash3"></i></button>
+        </form>
+      </div>
+      <% }); %>
+        <br>
+        <!-- Resume Section -->
+        <section id="resume">
+          <h2><u>Resume Information</u></h2>
+          <!-- Resume Reviewer -->
+          <div id="resumeContainer" class="mt-3">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="/documents/Resume-2025.pdf" width="100%" height="600px"
+                frameborder="0"></iframe>
+            </div>
+          </div>
+          <button id="resumeToggleBtn" class="btn btn-dark mt-2">Hide Resume</button>
+        </section>
+
+        </section>
+        <!-- Favorite Games Section-->
+        <section id="favoriteGames" class="ms-2 p-2">
+          <h2><u>List of Favorite Games!</u></h2>
+          <div class="mb-3">
+            <!-- Buttons for game list management -->
+            <button id="btnAddSong" class="btn btn-outline-dark" data-bs-toggle="modal"
+              data-bs-target="#addGameModal">Add
+              Game</button>
+
+            <button id="btnShowAll" class="btn btn-light btn-sm">Show All</button>
+            <button id="btnHideAll" class="btn btn-light btn-sm">Hide All</button>
+
+            <button id="btnConsoleData" class="btn btn-light btn-sm">Write Data Object in Console</button>
+
+          </div>
+          <ul id="gamesList" class="list-group"></ul>
+
+          <!-- Modal for adding a new game-->
+          <div id="addGameModal" class="modal fade" tabindex="-1" aria-labelledby="addGameModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addGameModalLabel">Add New Game</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class="list-group">
+                    <!-- Form inputs for adding a game -->
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Game Name</span>
+                      <input id="gameAddName" type="text" class="form-control" placeholder="game name">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Studio</span>
+                      <input id="gameAddStudio" type="text" class="form-control" placeholder="studio">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Publisher</span>
+                      <input id="gameAddPublisher" type="text" class="form-control" placeholder="publisher">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Genre</span>
+                      <input id="gameAddGenre" type="text" class="form-control" placeholder="genre">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Release Date</span>
+                      <input id="gameAddReleaseDate" type="text" class="form-control" placeholder="release date">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Platform</span>
+                      <input id="gameAddPlatform" type="text" class="form-control" placeholder="platform">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">ESRB Rating</span>
+                      <input id="gameAddESRBRating" type="text" class="form-control" placeholder="esrb rating">
+                    </li>
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">TrailerURL</span>
+                      <input id="gameAddTrailerURL" type="text" class="form-control" placeholder="trailer url">
+
+                    <li class="input-group w-100">
+                      <span class="w-20 input-group-text">Tags</span>
+                      <input id="gameAddTags" type="text" class="form-control" placeholder="tags">
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <!-- Button to save/close the new game -->
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button id="btnSaveGame" type="button" class="btn btn-primary">Save Game</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  </main>
 
   <footer class="footer bg-body-tertiary text-center text-lg-start fixed-bottom">
-    <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2024 Favorite Video Games |
-      <a class="text-body" href="https://github.com/OmarVCRZ" target="github">ODM@Github | </a>
-      <a href="/helloRender">This is my Hello from Render</a>
-      <!-- Copyright -->
+      © 2025 Profile App |
+      <a class="text-body" href="https://github.com/OmarVCRZ" target="_blank">ODM@Github</a> |
+      <a class="text-body" href="/README.md" target="_blank">README</a>
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
-  <!-- scripts go here -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script>
-    <script src='Scripts/Data.js'></script>
-    <!-- Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <!-- Custom -->
-    <script src="./Scripts/GameScript.js"></script>
+  <!-- Data Script -->
+  <script src="/scripts/data.js"></script>
 
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="/scripts/gamescript.js"></script>
 </body>
+
 </html>
