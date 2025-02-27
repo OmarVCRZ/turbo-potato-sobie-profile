@@ -50,11 +50,12 @@ app.post('/insert', async (req,res)=> {
   let results = await mongoCollection.insertOne({ 
     title: req.body.title,
     post: req.body.post
-  }).then( result => {console.log(result)} );
+  }).then( result => {console.log("Created a new object:", result)} );
   
   res.redirect('/');
 
 }); 
+
 app.post('/delete', async function (req, res) {
   
     let result = await mongoCollection.findOneAndDelete( 
@@ -62,26 +63,28 @@ app.post('/delete', async function (req, res) {
       "_id": new ObjectId(req.body.deleteId)
     }
   ).then(result => {
-    console.log(result)
+    console.log("Deleted Object:", result)
     res.redirect('/');
   })
 
 }); 
 
-app.post('/update', async (req,res)=>{
+app.post('/update', async (req, res) => {
   let result = await mongoCollection.findOneAndUpdate( 
-  {_id: ObjectId.createFromHexString(req.body.updateId)}, { 
-    $set: 
-      {
-        title : req.body.updateTitle, 
-        post : req.body.updatePost 
+    { _id: new ObjectId(req.body.updateId) }, 
+    { 
+      $set: {
+        title: req.body.updateTitle, 
+        post: req.body.updatePost 
       }
-     }
+    }, 
+    { returnDocument: "after" } // Ensures updated document is returned
   ).then(result => {
-  console.log(result); 
-  res.redirect('/');
-})
-}); 
+    console.log("Updated Object:", result); 
+    res.redirect('/');
+  });
+});
+
 
 
 app.listen(port, ()=> console.log(`server is running on ... localhost:${port}`) );
